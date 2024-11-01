@@ -16,7 +16,6 @@ local defaults = {
     ['!='] = '==',
   },
   opts = {
-    remove_default_keybinds = false,
     remove_default_inverses = false,
     autoselect_longest_match = false,
   },
@@ -140,14 +139,6 @@ function app:setup(opts)
   self.inv_tbl:add((opts or {}).inverses, true)
   if not self.opts.remove_default_inverses then
     self.inv_tbl:add(defaults.inverses)
-  end
-  if not self.opts.remove_default_keybinds then
-    vim.keymap.set(
-      { 'n', 'v' },
-      '<leader>i',
-      function() self:toggle() end,
-      { silent = true }
-    )
   end
 end
 
